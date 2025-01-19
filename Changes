@@ -1,6 +1,8 @@
 Revision history for DateTime::strftime
 
 {{$NEXT}}
+
+0.0.2  2025-01-19T18:02:26+01:00
     - Add support for :text: alternatives to rather cryptic
       strftime format codes
     - Mention availability of $*LOCALE-DATES for default
