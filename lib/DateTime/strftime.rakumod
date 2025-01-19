@@ -87,9 +87,9 @@ my sub strftime(
         $ld = Locale::Dates($*LOCALE-DATES // "EN");
     }
 
-    $format.trans: / '%' <[\w+%]> / => {
+    $format.subst(/ '%' <[\w+%]> /, {
         (%dispatch{$_} // -> $,$ { $_ })($dt, $ld)
-    }
+    }, :global)
 }
 
 my class DateTime is DateTime { }
