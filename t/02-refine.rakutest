@@ -1,0 +1,11 @@
+use Test;
+use DateTime::strftime :refine;
+
+plan 2;
+
+my $dt := DateTime.new(2025,1,19,14,7,42,:timezone(3600));
+
+is $dt.strftime('%p %P'), 'PM pm',       'is am/pm ok';
+is $dt.strftime('%r'),    '02:07:42 PM', 'is am/pm HH:MM:SS ok';
+
+# vim: expandtab shiftwidth=4

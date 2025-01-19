@@ -1,0 +1,68 @@
+use Test;
+use DateTime::strftime;
+
+my constant EN = "EN";
+my constant NL = "NL";
+
+plan 35;
+
+my $dt := DateTime.new(2025,1,5,4,7,42,:timezone(3600));
+is strftime($dt, '%c'), 'Sun Jan  5 04:07:42 +0100 2025',
+  'is %c correct in EN';
+is strftime($dt, '%c', NL), 'zon  5 jan 04:07:42 +0100 2025',
+  'is %c correct in NL';
+
+is strftime($dt, '%+'), 'Sun Jan  5 04:07:42 +0100 2025',
+  'is %+ correct in EN';
+is strftime($dt, '%+', NL), 'zon jan  5 04:07:42 +0100 2025',
+  'is %+ correct in NL';
+
+is strftime($dt, '%x'),       'Sun Jan  5 2025', 'is %x correct in EN';
+is strftime($dt, '%x', NL), 'zon  5 jan 2025', 'is %x correct in NL';
+
+is strftime($dt, '%X'),     '04:07:42', 'is %X correct in EN';
+is strftime($dt, '%X', NL), '04:07:42', 'is %X correct in NL';
+
+is strftime($dt, '%a %A'),       'Sun Sunday', 'are weekdays ok in EN';
+is strftime($dt, '%a %A', NL), 'zon zondag', 'are weekdays ok in NL';
+
+is strftime($dt, '%h %b %B'),     'Jan Jan January', 'are months ok in EN';
+is strftime($dt, '%h %b %B', NL), 'jan jan januari', 'are months ok in NL';
+
+is strftime($dt, '%v'),     ' 5-Jan-2025', 'are DD-MM-YYYY ok in EN';
+is strftime($dt, '%v', NL), ' 5-jan-2025', 'are DD-MM-YYYY ok in NL';
+
+is strftime($dt, '%C'),    '20',         'is century ok';
+is strftime($dt, '%e %d'), ' 5 05',      'are days of the month ok';
+is strftime($dt, '%D'),    '05/01/2025', 'is Yechh ok';
+is strftime($dt, '%F'),    '2025/01/05', 'is ISO 8601 date ok';
+
+is strftime($dt, '%g'), '25',   'is abbreviated week based year ok';
+is strftime($dt, '%G'), '2025', 'is week based year ok';
+
+is strftime($dt, '%k %l %H %I'), ' 4  4 04 04', 'is hour ok';
+
+is strftime($dt, '%j'), '005', 'is day of year ok';
+
+is strftime($dt, '%f %m'), '01 01', 'are months ok';
+is strftime($dt, '%M'),    '07',    'is minute ok';
+
+is strftime($dt, '%n %t %%'), "\n \t %", 'are special escapes ok';
+
+is strftime($dt, '%p %P'), 'AM am', 'is am/pm ok';
+
+is strftime($dt, '%r'), '04:07:42 AM', 'is am/pm HH:MM:SS ok';
+is strftime($dt, '%T'), '04:07:42',    'is HH:MM:SS ok';
+is strftime($dt, '%R'), '04:07',       'is HH:MM ok';
+
+is strftime($dt, '%s'), '1736046462', 'is epoch ok';
+is strftime($dt, '%S'), '42',         'is seconds ok';
+
+is strftime($dt, '%u %w'), '7 0',     'is day of week ok';
+
+is strftime($dt, '%U %V %W'), '01 01 01',      'are week numbers ok';
+is strftime($dt, '%L %y %Y'), '2025 25 2025',  'are years ok';
+
+is strftime($dt, '%z %Z'), '+0100 +0100', 'are timezones ok';
+
+# vim: expandtab shiftwidth=4

@@ -1,0 +1,29 @@
+{
+  "auth": "zef:lizmat",
+  "authors": [
+    "Elizabeth Mattijsen"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+    "Locale::Dates:ver<0.0.4+>:auth<zef:lizmat>"
+  ],
+  "description": "provide strftime() formatting for DateTime objects",
+  "license": "Artistic-2.0",
+  "name": "DateTime::strftime",
+  "perl": "6.d",
+  "provides": {
+    "DateTime::strftime": "lib/DateTime/strftime.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+    "DATETIME",
+    "STRFTIME",
+    "LOCALE"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}

@@ -1,0 +1,126 @@
+=begin pod
+
+=head1 NAME
+
+DateTime::strftime - provide strftime() formatting for DateTime objects
+
+=head1 SYNOPSIS
+
+=begin code :lang<raku>
+
+use DateTime::strftime;
+
+say strftime(DateTime.now, '%c');  # default": EN
+# Sun Jan 19 13:19:02 +0100 2025
+
+say strftime(DateTime.now, '%c', "NL");
+# zon 19 jan 13:19:02 +0100 2025
+
+=end code
+
+=head1 DESCRIPTION
+
+The C<DateTime::strftime> distribution provides a C<strftime> subroutine
+that takes a C<DateTime> object, a
+L<C<strftime>|https://linux.die.net/man/3/strftime> format string, and
+an optional locale indicator (which defaults to C<"EN">).  It returns
+the representation of the C<DateTime> object according to that format
+and locale.
+
+=head1 FORMAT SPECIFICATION
+
+The supported formats are a (large) subset of C<strftime>. The C<E>
+and C<O> modifiers are B<not> supported.
+
+=begin table
+
+| Code | Value
+|------|------
+| %a   | abbreviated weekday name
+| %A   | full weekday name
+| %b   | abbreviated month name
+| %B   | full month name
+| %c   | preferred date/time representation
+| %C   | century number (year div 100)
+| %d   | day of month ("01" .. "31")
+| %D   | short for: %m/%d/%y
+| %e   | day of month (" 1" .. "31")
+| %f   | same as %M
+| %F   | short for: %Y/%m/%d
+| %g   | YY of this week ("00" .. "99")
+| %G   | YYYY of this week
+| %h   | same as %b
+| %H   | 24-hour hour ("00" .. "23")
+| %I   | 12-hour hour ("01" .. "12")
+| %j   | day of the year ("001" .. "366")
+| %k   | 24-hour hour (" 1" .. "23")
+| %l   | 12-hour hour (" 1" .. "12")
+| %L   | same as %Y
+| %m   | month ("01" .. "12")
+| %M   | minute ("00" .. "59")
+| %n   | "\n"
+| %p   | "AM" \| "PM"
+| %P   | "am" \| "pm"
+| %r   | short for: %I:%M:%S %p
+| %R   | short for: %H:%M
+| %s   | seconds since epoch (midnight 1970-01-01 UTC)
+| %S   | second ("00" .. "59")
+| %t   | "\t"
+| %T   | short for: %H:%M:%S
+| %u   | weekday (1 .. 7)
+| %U   | week number (first Sunday) ("00" .. "53")
+| %v   | short for: %e-%b-%Y
+| %V   | week number (ISO 8601) ("00" .. "53")
+| %w   | weekday (0 .. 6)
+| %W   | week number (first Monday) ("00" .. "53")
+| %x   | preferred date representation
+| %X   | preferred time representation
+| %y   | year without century ("00" .. "99")
+| %Y   | year (yyyy)
+| %z   | numeric timezone (±HHMM)
+| %Z   | timezone (no name: %z)
+| %+   | short for: %a %b %e %T %Z %G
+| %%   | "%"
+
+=end table
+
+=head1 LEXICAL REFINEMENT
+
+=begin code :lang<raku>
+
+use DateTime::strftime :refine;
+
+say DateTime.now.strftime('%c');  # default": EN
+# Sun Jan 19 13:19:02 +0100 2025
+
+say DateTime.now.strftime('%c', "NL");
+# zon 19 jan 13:19:02 +0100 2025
+
+=end code
+
+You can also use C<DateTime::strftime> with the C<:refine> parameter.  This
+will add a C<strftime> method to the C<DateTime> class in the lexical scope
+in which the C<use> statement is located.  This allows one to not to have
+to change existing code using the C<DateTime> class, while still having the
+added functionality of a C<DateTime.strftime> method.
+
+=head1 AUTHOR
+
+Elizabeth Mattijsen <liz@raku.rocks>
+
+Source can be located at: https://github.com/lizmat/DateTime-strftime .
+Comments and Pull Requests are welcome.
+
+If you like this module, or what I'm doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2025 Elizabeth Mattijsen
+
+This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+
+=end pod
+
+# vim: expandtab shiftwidth=4
