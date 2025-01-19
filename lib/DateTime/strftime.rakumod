@@ -18,10 +18,8 @@ my sub timezone(Int() $timezone) {
     $timezone < 0 ?? "-$tz" !! "+$tz"
 }
 
-# The dispatch mapping, should really be a constant, but that causes
-# some lookup issues, specifically of $_, at runtime.  So we run it
-# here once at startup
-my %dispatch is Map = 
+# The initial dispatch mapping
+my %dispatch = 
   "%a" => -> $dt, $ld { $ld.abbreviated-weekdays[$dt.day-of-week] },
   "%A" => -> $dt, $ld { $ld.weekdays[$dt.day-of-week] },
   "%b" => -> $dt, $ld { $ld.abbreviated-months[$dt.month] },
@@ -73,6 +71,57 @@ my %dispatch is Map =
   "%%" => -> $  , $   { "%" },
 ;
 
+# Set up mapping of :text: version to strftime format codes
+for <
+  :wkdname:       %a
+  :weekdayname:   %A
+  :mnthname:      %b
+  :monthname:     %B
+  :datetime:      %c
+  :century:       %C
+  :0day:          %d
+  :usadate:       %D
+  :day:           %e
+  :isodate:       %F
+  :weekYY:        %g
+  :weekYYYY:      %G
+  :0hour:         %H
+  :0amhour:       %I
+  :yearday:       %j
+  :hour:          %k
+  :amhour:        %l
+  :month:         %m
+  :minute:        %M
+  :newline:       %n
+  :AMPM:          %p
+  :ampm:          %P
+  :amtime:        %r
+  :HHMM:          %R
+  :epoch:         %s
+  :second:        %S
+  :tab:           %t
+  :HHMMSS:        %T
+  :weekday:       %u
+  :weekSun:       %U
+  :day-mon-year:  %v
+  :weekISO:       %V
+  :0weekday:      %w
+  :weekMon:       %W
+  :date:          %x
+  :time:          %X
+  :YY:            %y
+  :year:          %Y
+  :tzoffset:      %z
+  :timezone:      %Z
+  :unixdate:      %+
+  :percent:       %%
+> -> $text, $code {
+    %dispatch{$text} := %dispatch{$code}
+}
+
+# Make dispatch table immutable
+%dispatch := %dispatch.Map;
+
 # The actual handler
 my sub strftime(
   DateTime:D $dt,
@@ -83,11 +132,14 @@ my sub strftime(
     if $ld {
         $ld = Locale::Dates($ld) if $ld ~~ Str;
     }
+    orwith $*LOCALE-DATES {
+        $ld = $_ ~~ Locale::Dates ?? $_ !! Locale::Dates(.Str)
+    }
     else {
-        $ld = Locale::Dates($*LOCALE-DATES // "EN");
+        $ld = Locale::Dates("EN");
     }
 
-    $format.subst(/ '%' <[\w+%]> /, {
+    $format.subst(/ [ '%' <[\w+%]> ] | [ ':' <[\w-]>+ ':' ] /, {
         (%dispatch{$_} // -> $,$ { $_ })($dt, $ld)
     }, :global)
 }

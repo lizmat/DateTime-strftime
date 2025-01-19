@@ -1,11 +1,23 @@
 use Test;
 use DateTime::strftime :refine;
 
-plan 2;
+plan 6;
 
 my $dt := DateTime.new(2025,1,19,14,7,42,:timezone(3600));
 
-is $dt.strftime('%p %P'), 'PM pm',       'is am/pm ok';
-is $dt.strftime('%r'),    '02:07:42 PM', 'is am/pm HH:MM:SS ok';
+is $dt.strftime('%p %P'),         'PM pm',       'is am/pm ok';
+is $dt.strftime(':AMPM: :ampm:'), 'PM pm', 'is am/pm ok';
+
+is $dt.strftime('%r'),       '02:07:42 PM', 'is am/pm HH:MM:SS ok';
+is $dt.strftime(':amtime:'), '02:07:42 PM', 'is am/pm HH:MM:SS ok';
+
+{
+    my $*LOCALE-DATES = "NL";
+    is $dt.strftime(":datetime:"), 'zon 19 jan 14:07:42 +0100 2025',
+      'did implicite local setting work';
+}
+
+is $dt.strftime(":datetime:"), 'Sun Jan 19 14:07:42 +0100 2025',
+  'did implicite local setting work';
 
 # vim: expandtab shiftwidth=4

@@ -20,69 +20,90 @@ say strftime(DateTime.now, '%c', "NL");
 
 =head1 DESCRIPTION
 
-The C<DateTime::strftime> distribution provides a C<strftime> subroutine
-that takes a C<DateTime> object, a
-L<C<strftime>|https://linux.die.net/man/3/strftime> format string, and
-an optional locale indicator (which defaults to C<"EN">).  It returns
-the representation of the C<DateTime> object according to that format
-and locale.
+The C<DateTime::strftime> distribution provides a C<strftime>
+subroutine that takes a C<DateTime> object, a
+L<C<strftime>|https://linux.die.net/man/3/strftime> format string (or
+its C<:text:> equivalent), and an optional locale indicator (which
+defaults to the dynamic variable C<$*LOCALE-DATES> or C<"EN">).
+
+It returns the representation of the C<DateTime> object according
+to that format and locale.
 
 =head1 FORMAT SPECIFICATION
 
 The supported formats are a (large) subset of C<strftime>. The C<E>
 and C<O> modifiers are B<not> supported.
 
+Since the C<strftime> format codes are rather cryptic (although very
+widely in use), one can also use an alternate C<:text:> format.  So
+instead of the rather cryptic C<"%c">, one can also use C<":datetime:">.
+
 =begin table
 
-| Code | Value
-|------|------
-| %a   | abbreviated weekday name
-| %A   | full weekday name
-| %b   | abbreviated month name
-| %B   | full month name
-| %c   | preferred date/time representation
-| %C   | century number (year div 100)
-| %d   | day of month ("01" .. "31")
-| %D   | short for: %m/%d/%y
-| %e   | day of month (" 1" .. "31")
-| %f   | same as %M
-| %F   | short for: %Y/%m/%d
-| %g   | YY of this week ("00" .. "99")
-| %G   | YYYY of this week
-| %h   | same as %b
-| %H   | 24-hour hour ("00" .. "23")
-| %I   | 12-hour hour ("01" .. "12")
-| %j   | day of the year ("001" .. "366")
-| %k   | 24-hour hour (" 1" .. "23")
-| %l   | 12-hour hour (" 1" .. "12")
-| %L   | same as %Y
-| %m   | month ("01" .. "12")
-| %M   | minute ("00" .. "59")
-| %n   | "\n"
-| %p   | "AM" \| "PM"
-| %P   | "am" \| "pm"
-| %r   | short for: %I:%M:%S %p
-| %R   | short for: %H:%M
-| %s   | seconds since epoch (midnight 1970-01-01 UTC)
-| %S   | second ("00" .. "59")
-| %t   | "\t"
-| %T   | short for: %H:%M:%S
-| %u   | weekday (1 .. 7)
-| %U   | week number (first Sunday) ("00" .. "53")
-| %v   | short for: %e-%b-%Y
-| %V   | week number (ISO 8601) ("00" .. "53")
-| %w   | weekday (0 .. 6)
-| %W   | week number (first Monday) ("00" .. "53")
-| %x   | preferred date representation
-| %X   | preferred time representation
-| %y   | year without century ("00" .. "99")
-| %Y   | year (yyyy)
-| %z   | numeric timezone (±HHMM)
-| %Z   | timezone (no name: %z)
-| %+   | short for: %a %b %e %T %Z %G
-| %%   | "%"
+| Code | :text:      | Value
+|------|-------------+------
+| %a   | wkdname     | abbreviated weekday name
+| %A   | weekdayname | full weekday name
+| %b   | mnthname    | abbreviated month name
+| %B   | monthname   | full month name
+| %c   | datetime    | preferred date/time representation
+| %C   | century     | century number (year div 100)
+| %d   | 0day        | day of month ("01" .. "31")
+| %D   | usadate     | short for: %m/%d/%y
+| %e   | day         | day of month (" 1" .. "31")
+| %f   |             | same as %M
+| %F   | isodate     | short for: %Y/%m/%d
+| %g   | weekYY      | YY of this week ("00" .. "99")
+| %G   | weekYYYY    | full year of this week
+| %h   |             | same as %b
+| %H   | 0hour       | 24-hour hour ("00" .. "23")
+| %I   | 0amhour     | 12-hour hour ("01" .. "12")
+| %j   | yearday     | day of the year ("001" .. "366")
+| %k   | hour        | 24-hour hour (" 1" .. "23")
+| %l   | amhour      | 12-hour hour (" 1" .. "12")
+| %L   |             | same as %Y
+| %m   | month       | month ("01" .. "12")
+| %M   | minute      | minute ("00" .. "59")
+| %n   | newline     | "\n"
+| %p   | AMPM        | "AM" \| "PM"
+| %P   | ampm        | "am" \| "pm"
+| %r   | amtime      | short for: %I:%M:%S %p
+| %R   | HHMM        | short for: %H:%M
+| %s   | epoch       | seconds since epoch (midnight 1970-01-01 UTC)
+| %S   | second      | second ("00" .. "59")
+| %t   | tab         | "\t"
+| %T   | HHMMSS      | short for: %H:%M:%S
+| %u   | weekday     | weekday (1 .. 7)
+| %U   | weekSun     | week number (first Sunday) ("00" .. "53")
+| %v   | DD-MON-YYYY | short for: %e-%b-%Y
+| %V   | weekISO     | week number (ISO 8601) ("00" .. "53")
+| %w   | 0weekday    | weekday (0 .. 6)
+| %W   | weekMon     | week number (first Monday) ("00" .. "53")
+| %x   | date        | preferred date representation
+| %X   | time        | preferred time representation
+| %y   | YY          | year without century ("00" .. "99")
+| %Y   | year        | year (yyyy)
+| %z   | tzoffset    | numeric timezone (±HHMM)
+| %Z   | timezone    | timezone (no name: %z)
+| %+   | unixdate    | short for: %a %b %e %T %Z %G
+| %%   | percent     | "%"
 
 =end table
+
+=head1 DEFAULT LOCALIZATION
+
+=begin code :lang<raku>
+
+my $*LOCALE-DATES = "NL";
+say strftime($dt, ':weekdayname:');        # zondag
+say strftime($dt, ':weekdayname:', "EN");  # Sunday
+
+=end code
+
+The C<$*LOCALE-DATES> dynamic variable can be set with the string of
+the desired localization, or with an instantiated C<Locale::Dates> object.
+It will then affect any call to C<strftime> that does B<not> have an
+explicit localization specified.
 
 =head1 LEXICAL REFINEMENT
 
@@ -93,7 +114,7 @@ use DateTime::strftime :refine;
 say DateTime.now.strftime('%c');  # default": EN
 # Sun Jan 19 13:19:02 +0100 2025
 
-say DateTime.now.strftime('%c', "NL");
+say DateTime.now.strftime(':datetime:', "NL");
 # zon 19 jan 13:19:02 +0100 2025
 
 =end code
