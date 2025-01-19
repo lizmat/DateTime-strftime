@@ -1,4 +1,6 @@
 Revision history for DateTime::strftime
 
 {{$NEXT}}
+
+0.0.1  2025-01-19T15:57:21+01:00
     - Initial version

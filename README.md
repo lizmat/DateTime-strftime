@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/lizmat/DateTime-strftime/actions/workflows/linux.yml/badge.svg)](https://github.com/lizmat/DateTime-strftime/actions) [![Actions Status](https://github.com/lizmat/DateTime-strftime/actions/workflows/macos.yml/badge.svg)](https://github.com/lizmat/DateTime-strftime/actions) [![Actions Status](https://github.com/lizmat/DateTime-strftime/actions/workflows/windows.yml/badge.svg)](https://github.com/lizmat/DateTime-strftime/actions)
+
 NAME
 ====
 
