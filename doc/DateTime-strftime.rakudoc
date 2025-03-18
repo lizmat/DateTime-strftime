@@ -90,6 +90,12 @@ instead of the rather cryptic C<"%c">, one can also use C<":datetime:">.
 
 =end table
 
+Please note that one probably shouldn't use the C<%g> and C<%y> formats
+for anything that is persistent.  Data and programs stay around longer
+then anybody expects, and we don't want another
+L<Y2K|https://en.wikipedia.org/wiki/Year_2000_problem> problem, especially
+in a 100-year programming language!
+
 =head1 DEFAULT LOCALIZATION
 
 =begin code :lang<raku>
@@ -124,6 +130,12 @@ will add a C<strftime> method to the C<DateTime> class in the lexical scope
 in which the C<use> statement is located.  This allows one to not to have
 to change existing code using the C<DateTime> class, while still having the
 added functionality of a C<DateTime.strftime> method.
+
+=head1 OTHER SOFTWARE
+
+See also Jean Forget's
+L<C<Date::Calendar::Strftime>|https://raku.land/zef:jforget/Date::Calendar::Strftime> and
+L<C<Date::Calendar::Gregorian>|https://raku.land/zef:jforget/Date::Calendar::Gregorian>.
 
 =head1 AUTHOR
 

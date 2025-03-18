@@ -144,6 +144,7 @@ my sub strftime(
     }, :global)
 }
 
+# Set up the refinement
 my class DateTime is DateTime { }
 BEGIN DateTime.^add_method: "strftime", &strftime;
 

@@ -2,6 +2,9 @@ Revision history for DateTime::strftime
 
 {{$NEXT}}
 
+0.0.3  2025-03-18T09:22:34+01:00
+    - Added some references, as suggested by Jean Forget++
+
 0.0.2  2025-01-19T18:02:26+01:00
     - Add support for :text: alternatives to rather cryptic
       strftime format codes

@@ -41,6 +41,8 @@ Since the `strftime` format codes are rather cryptic (although very widely in us
 </tbody>
 </table>
 
+Please note that one probably shouldn't use the `%g` and `%y` formats for anything that is persistent. Data and programs stay around longer then anybody expects, and we don't want another [Y2K](https://en.wikipedia.org/wiki/Year_2000_problem) problem, especially in a 100-year programming language!
+
 DEFAULT LOCALIZATION
 ====================
 
@@ -66,6 +68,11 @@ say DateTime.now.strftime(':datetime:', "NL");
 ```
 
 You can also use `DateTime::strftime` with the `:refine` parameter. This will add a `strftime` method to the `DateTime` class in the lexical scope in which the `use` statement is located. This allows one to not to have to change existing code using the `DateTime` class, while still having the added functionality of a `DateTime.strftime` method.
+
+OTHER SOFTWARE
+==============
+
+See also Jean Forget's [`Date::Calendar::Strftime`](https://raku.land/zef:jforget/Date::Calendar::Strftime) and [`Date::Calendar::Gregorian`](https://raku.land/zef:jforget/Date::Calendar::Gregorian).
 
 AUTHOR
 ======
