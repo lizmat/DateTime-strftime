@@ -6,7 +6,7 @@
   "build-depends": [
   ],
   "depends": [
-    "Locale::Dates:ver<0.0.4+>:auth<zef:lizmat>"
+    "Locale::Dates:ver<0.0.5+>:auth<zef:lizmat>"
   ],
   "description": "provide strftime() formatting for DateTime objects",
   "license": "Artistic-2.0",
@@ -25,5 +25,5 @@
   ],
   "test-depends": [
   ],
-  "version": "0.0.3"
+  "version": "0.0.4"
 }

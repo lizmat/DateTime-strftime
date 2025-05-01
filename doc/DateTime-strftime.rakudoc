@@ -85,7 +85,7 @@ instead of the rather cryptic C<"%c">, one can also use C<":datetime:">.
 | %Y   | year        | year (yyyy)
 | %z   | tzoffset    | numeric timezone (±HHMM)
 | %Z   | timezone    | timezone (no name: %z)
-| %+   | unixdate    | short for: %a %b %e %T %Z %G
+| %+   | unixdate    | short for: %a %b %e %T %Z %Y
 | %%   | percent     | "%"
 
 =end table

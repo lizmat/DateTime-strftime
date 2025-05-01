@@ -1,4 +1,4 @@
-use Locale::Dates:ver<0.0.4+>:auth<zef:lizmat>;
+use Locale::Dates:ver<0.0.5+>:auth<zef:lizmat>;
 
 # Fast sprintf(%02i) and sprintf(%2i)
 my sub percent02i($value) { $value < 10 ?? "0$value" !! $value.Str }
@@ -67,7 +67,7 @@ my %dispatch =
   "%Z" => -> $dt, $   {
       my $tz = $dt.timezone; $tz ~~ Int ?? timezone($tz) !! $tz
   },
-  "%+" => -> $dt, $ld { strftime($dt, '%a %b %e %T %Z %G', $ld) },
+  "%+" => -> $dt, $ld { strftime($dt, '%a %b %e %T %Z %Y', $ld) },
   "%%" => -> $  , $   { "%" },
 ;
 

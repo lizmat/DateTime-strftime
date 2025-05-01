@@ -2,6 +2,11 @@ Revision history for DateTime::strftime
 
 {{$NEXT}}
 
+0.0.4  2025-05-01T11:53:32+02:00
+    - Don't use %G together with %b, as suggested by Jean Forget++
+    - Bump dependency on DateTime::strftime after bugfix
+      suggested by Jean Forget++
+
 0.0.3  2025-03-18T09:22:34+01:00
     - Added some references, as suggested by Jean Forget++
 
