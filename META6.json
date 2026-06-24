@@ -23,9 +23,9 @@
   ],
   "source-url": "https://codeberg.org/lizmat/DateTime-strftime.git",
   "support": {
-    "bugtracker": "https://github.com/lizmat/DateTime-strftime/issues",
+    "bugtracker": "https://codeberg.org/lizmat/DateTime-strftime/issues",
     "email": "liz@raku.rocks",
-    "source": "https://github.com/lizmat/DateTime-strftime.git"
+    "source": "https://codeberg.org/lizmat/DateTime-strftime.git"
   },
   "tags": [
     "DATETIME",
@@ -34,5 +34,5 @@
   ],
   "test-depends": [
   ],
-  "version": "0.0.5"
+  "version": "0.0.6"
 }

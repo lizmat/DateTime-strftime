@@ -135,7 +135,7 @@ L<C<Date::Calendar::Gregorian>|https://raku.land/zef:jforget/Date::Calendar::Gre
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
-Source can be located at: https://github.com/lizmat/DateTime-strftime .
+Source can be located at: https://codeberg.org/lizmat/DateTime-strftime .
 Comments and Pull Requests are welcome.
 
 If you like this module, or what I'm doing more generally, committing to a

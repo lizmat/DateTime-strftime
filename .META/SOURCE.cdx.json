@@ -4,7 +4,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-24T12:34:10+00:00",
+    "timestamp": "2026-06-24T12:40:38+00:00",
     "lifecycles": [
       {
         "phase": "pre-build"
@@ -19,7 +19,7 @@
     "component": {
       "type": "library",
       "mime-type": "text/plain",
-      "bom-ref": "pkg:raku/zef:lizmat/DateTime::strftime@0.0.5",
+      "bom-ref": "pkg:raku/zef:lizmat/DateTime::strftime@0.0.6",
       "authors": [
         {
           "bom-ref": "ElizabethMattijsen",
@@ -29,7 +29,7 @@
       "publisher": "zef",
       "group": "zef:lizmat",
       "name": "DateTime::strftime",
-      "version": "0.0.5",
+      "version": "0.0.6",
       "description": "provide strftime() formatting for DateTime objects",
       "scope": "required",
       "licenses": [
@@ -41,27 +41,23 @@
           }
         }
       ],
-      "purl": "pkg:raku/zef:lizmat/DateTime::strftime@0.0.5",
+      "purl": "pkg:raku/zef:lizmat/DateTime::strftime@0.0.6",
       "externalReferences": [
         {
-          "url": "https://github.com/lizmat/DateTime-strftime",
+          "url": "https://codeberg.org/lizmat/DateTime-strftime",
           "type": "distribution"
         },
         {
-          "url": "https://raku.land/zef:lizmat/DateTime::strftime?v=0.0.5",
+          "url": "https://raku.land/zef:lizmat/DateTime::strftime?v=0.0.6",
           "type": "documentation"
         },
         {
-          "url": "https://github.com/lizmat/DateTime-strftime/issues",
+          "url": "https://codeberg.org/lizmat/DateTime-strftime/issues",
           "type": "issue-tracker"
         },
         {
           "url": "https://spdx.org/licenses/Artistic-2.0.json",
           "type": "license"
-        },
-        {
-          "url": "https://github.com/lizmat/DateTime-strftime/archive/refs/tags/0.0.5.zip",
-          "type": "source-distribution"
         },
         {
           "url": "mailto:liz@raku.rocks",
@@ -295,24 +291,20 @@
   ],
   "externalReferences": [
     {
-      "url": "https://github.com/lizmat/DateTime-strftime",
+      "url": "https://codeberg.org/lizmat/DateTime-strftime",
       "type": "distribution"
     },
     {
-      "url": "https://raku.land/zef:lizmat/DateTime::strftime?v=0.0.5",
+      "url": "https://raku.land/zef:lizmat/DateTime::strftime?v=0.0.6",
       "type": "documentation"
     },
     {
-      "url": "https://github.com/lizmat/DateTime-strftime/issues",
+      "url": "https://codeberg.org/lizmat/DateTime-strftime/issues",
       "type": "issue-tracker"
     },
     {
       "url": "https://spdx.org/licenses/Artistic-2.0.json",
       "type": "license"
-    },
-    {
-      "url": "https://github.com/lizmat/DateTime-strftime/archive/refs/tags/0.0.5.zip",
-      "type": "source-distribution"
     },
     {
       "url": "mailto:liz@raku.rocks",
