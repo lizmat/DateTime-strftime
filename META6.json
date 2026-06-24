@@ -21,7 +21,7 @@
   "raku": "6.d",
   "resources": [
   ],
-  "source-url": "https://github.com/lizmat/DateTime-strftime.git",
+  "source-url": "https://codeberg.org/lizmat/DateTime-strftime.git",
   "support": {
     "bugtracker": "https://github.com/lizmat/DateTime-strftime/issues",
     "email": "liz@raku.rocks",
@@ -34,5 +34,5 @@
   ],
   "test-depends": [
   ],
-  "version": "0.0.4"
+  "version": "0.0.5"
 }

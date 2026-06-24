@@ -1,6 +1,8 @@
 Revision history for DateTime::strftime
 
 {{$NEXT}}
+
+0.0.5  2026-06-24T14:33:36+02:00
     - Bump dependency on DateTime::strftime for Russian
       localization
     - Update copyright year
