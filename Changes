@@ -1,6 +1,9 @@
 Revision history for DateTime::strftime
 
 {{$NEXT}}
+    - Bump dependency on DateTime::strftime for Russian
+      localization
+    - Update copyright year
 
 0.0.4  2025-05-01T11:53:32+02:00
     - Don't use %G together with %b, as suggested by Jean Forget++

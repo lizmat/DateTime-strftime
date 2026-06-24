@@ -5,19 +5,28 @@
   ],
   "build-depends": [
   ],
-  "depends": [
-    "Locale::Dates:ver<0.0.5+>:auth<zef:lizmat>"
-  ],
+  "depends": {
+    "runtime": {
+      "requires": [
+        "Locale::Dates:ver<0.0.6+>:auth<zef:lizmat>"
+      ]
+    }
+  },
   "description": "provide strftime() formatting for DateTime objects",
   "license": "Artistic-2.0",
   "name": "DateTime::strftime",
-  "perl": "6.d",
   "provides": {
     "DateTime::strftime": "lib/DateTime/strftime.rakumod"
   },
+  "raku": "6.d",
   "resources": [
   ],
   "source-url": "https://github.com/lizmat/DateTime-strftime.git",
+  "support": {
+    "bugtracker": "https://github.com/lizmat/DateTime-strftime/issues",
+    "email": "liz@raku.rocks",
+    "source": "https://github.com/lizmat/DateTime-strftime.git"
+  },
   "tags": [
     "DATETIME",
     "STRFTIME",

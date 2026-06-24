@@ -7,7 +7,6 @@ DateTime::strftime - provide strftime() formatting for DateTime objects
 =head1 SYNOPSIS
 
 =begin code :lang<raku>
-
 use DateTime::strftime;
 
 say strftime(DateTime.now, '%c');  # default": EN
@@ -15,7 +14,6 @@ say strftime(DateTime.now, '%c');  # default": EN
 
 say strftime(DateTime.now, '%c', "NL");
 # zon 19 jan 13:19:02 +0100 2025
-
 =end code
 
 =head1 DESCRIPTION
@@ -99,11 +97,9 @@ in a 100-year programming language!
 =head1 DEFAULT LOCALIZATION
 
 =begin code :lang<raku>
-
 my $*LOCALE-DATES = "NL";
 say strftime($dt, ':weekdayname:');        # zondag
 say strftime($dt, ':weekdayname:', "EN");  # Sunday
-
 =end code
 
 The C<$*LOCALE-DATES> dynamic variable can be set with the string of
@@ -114,7 +110,6 @@ explicit localization specified.
 =head1 LEXICAL REFINEMENT
 
 =begin code :lang<raku>
-
 use DateTime::strftime :refine;
 
 say DateTime.now.strftime('%c');  # default": EN
@@ -122,7 +117,6 @@ say DateTime.now.strftime('%c');  # default": EN
 
 say DateTime.now.strftime(':datetime:', "NL");
 # zon 19 jan 13:19:02 +0100 2025
-
 =end code
 
 You can also use C<DateTime::strftime> with the C<:refine> parameter.  This
@@ -150,7 +144,7 @@ deal to me!
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2025 Elizabeth Mattijsen
+Copyright 2025, 2026 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
