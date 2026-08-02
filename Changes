@@ -2,11 +2,15 @@ Revision history for DateTime::strftime
 
 {{$NEXT}}
 
+0.0.7  2026-08-02T12:44:00+02:00
+    - Bump dependency on Locale::Dates for Bulgarian,
+      French and Portuguese localizations
+
 0.0.6  2026-06-24T14:40:03+02:00
     - Properly migrate repo to Codeberg
 
 0.0.5  2026-06-24T14:33:36+02:00
-    - Bump dependency on DateTime::strftime for Russian
+    - Bump dependency on Locale::Dates for Russian
       localization
     - Update copyright year
 

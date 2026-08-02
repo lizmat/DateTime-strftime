@@ -1,4 +1,4 @@
-use Locale::Dates:ver<0.0.5+>:auth<zef:lizmat>;
+use Locale::Dates:ver<0.0.7+>:auth<zef:lizmat>;
 
 # Fast sprintf(%02i) and sprintf(%2i)
 my sub percent02i($value) { $value < 10 ?? "0$value" !! $value.Str }
