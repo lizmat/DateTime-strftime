@@ -4,7 +4,7 @@ use DateTime::strftime;
 my constant EN = "EN";
 my constant NL = "NL";
 
-plan 35;
+plan 36;
 
 my $dt := DateTime.new(2025,1,5,4,7,42,:timezone(3600));
 is strftime($dt, '%c'), 'Sun Jan  5 04:07:42 +0100 2025',
@@ -64,5 +64,7 @@ is strftime($dt, '%U %V %W'), '01 01 01',      'are week numbers ok';
 is strftime($dt, '%L %y %Y'), '2025 25 2025',  'are years ok';
 
 is strftime($dt, '%z %Z'), '+0100 +0100', 'are timezones ok';
+
+is strftime($dt, '%2'), 'Sun, 05 Jan 2025 04:07:42 +0100', 'is RFC2822 ok';
 
 # vim: expandtab shiftwidth=4

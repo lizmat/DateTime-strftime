@@ -2,6 +2,10 @@ Revision history for DateTime::strftime
 
 {{$NEXT}}
 
+0.0.8  2026-08-05T18:16:38+02:00
+    - Add support for :rfc2822: and %2 formats, providing
+      RFC2822 compatible DateTime strings
+
 0.0.7  2026-08-02T12:44:00+02:00
     - Bump dependency on Locale::Dates for Bulgarian,
       French and Portuguese localizations

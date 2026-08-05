@@ -67,6 +67,7 @@ my %dispatch =
   "%Z" => -> $dt, $   {
       my $tz = $dt.timezone; $tz ~~ Int ?? timezone($tz) !! $tz
   },
+  "%2" => -> $dt, $ld { strftime($dt, "%a, %d %b %Y %T %z", $ld) },
   "%+" => -> $dt, $ld { strftime($dt, '%a %b %e %T %Z %Y', $ld) },
   "%%" => -> $  , $   { "%" },
 ;
@@ -114,6 +115,7 @@ for <
   :tzoffset:      %z
   :timezone:      %Z
   :unixdate:      %+
+  :rfc2822:       %2
   :percent:       %%
 > -> $text, $code {
     %dispatch{$text} := %dispatch{$code}
